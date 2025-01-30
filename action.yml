@@ -5,24 +5,23 @@ branding:
   icon: 'server'
   color: 'white'
 inputs:
-  github-token: 
+  github-token:
     description: The GitHub token
-    default: ${{ github.token }}
-    required: true
+    default: ''
   ref:
     description: 'Branch or commit SHA'
-    required: true
+    default: ''
   environment:
     description: 'Environment name'
-    required: true
+    default: ''
   status:
     description: 'Deployment status'
-    required: false
-outputs:
-  id: 
-    description: 'Top Deployment ID'
-  ids: 
-    description: 'All Matching Deployment IDs'
+    default: ''
 runs:
-  using: 'node12'
-  main: 'index.js'
+  using: 'composite'
+  steps:
+    - name: Deprecated FinalCAD/SeekDeploymentAction
+      shell: bash
+      run: |
+        echo "::error title=Deprecated FinalCAD/SeekDeploymentAction::The action FinalCAD/SeekDeploymentAction is deprecated. Use official [cloudposse/github-action-seek-deployment](https://github.com/cloudposse/github-action-seek-deployment) instead."
+        exit 1
